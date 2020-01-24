@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <style>
+            .main_div{
+                height:800px;
+                width:800px;
+                border:1px solid;
+                border-radius: 5px;
+                margin-left:280px;
+                margin-top:5px;
+                background-color:#f6e5f5;
+                box-shadow: 5px 10px 10px 10px;
+            }
+            .div2{
+              height:550px;
+              width:700px;
+              border:2px solid;
+              border-radius: 5px;
+              margin-left: 50px;
+              margin-top:15px;
+              background-color: #fbf4f9;
+              box-shadow: 5px 5px 5px 5px;
+             
+          }
+
+            .mh{
+              text-align: center;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            h{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            .text{
+                width: 250px;
+                height:40px;
+                border-radius:5px;
+                margin-left:50px;
+            }
+            .add{
+                width:100px;
+                height:38px;
+                border: 1px solid #0394fc;
+                border-radius: 5px;
+                float: right;
+                margin-right: 50px;
+                background-color:#0394fc;
+            }
+            .addbtn{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                margin-top: 10px;
+                color: white;
+            }
+            .line{
+                height:40px;
+                border: 2px solid;
+                width: 685px;
+                margin-top: 5px;
+                margin-left: 5px;
+                border-radius: 5px; 
+                background-color:#f6e5f5 ;               
+            }
+
+            .line2{
+                
+                width: 100px;
+                height:30px;
+                border:1px solid;
+                margin-top: 3px;
+                margin-left: 3px;
+                margin-right: 3px;
+                text-align: center;
+                border-radius: 5px;
+                background-color: #d42f2f;
+                float:right;
+            }
+        </style>
+    </head>
+<body>
+    <div  class="main_div">
+        <h1 class="mh">PhoneBooK</h1>
+        <input id = "1" class="text" type ="text" onfocus="this.value=''" placeholder="Enter Name">
+        <input id ="2" class="text" type="text" onfocus="this.value=''"placeholder="Enter Mobile Number">
+        
+        <div class="add" onclick="add()"><h4 class="addbtn">Add</h4></div class="add">
+        
+            <br>
+
+        <div class="div2" id="3">
+            
+      
+        </div>
+
+    </div>   
+   
+    
+    
+    
+    <script>
+        var contacts = [];
+        function add(){
+            var name = document.getElementById("1").value;
+           
+            var mobile = document.getElementById("2").value;
+            if(name.length == 0 || mobile.length==0){
+                alert("Enter Values Properly");
+
+            }else{
+                     /*alert("name: "+name+" Mobile: "+mobile);*/
+                var con = {
+                        newName : name,
+                        newMobile : mobile
+                    };
+                    contacts.push(con);
+                    /*alert("newName: "+con.newName+" newMobile: "+con.newMobile);*/
+                    print();
+            }
+            
+           
+        }
+
+        function print(){
+            var temp="";
+            for(var i=0;i<contacts.length;i++){
+                temp += "<div class='line'><b>"+contacts[i].newName+"-"+contacts[i].newMobile+"</b><div class='line2' onclick='del("+i+")'><b>&#10007;</b></div></div>";
+
+            }
+            document.getElementById("3").innerHTML = temp;
+        }
+
+        function del(i){
+            // alert(i);
+            contacts.splice(i,1);
+            print();
+        }
+        
+    </script>
+</body>
+</html>       
